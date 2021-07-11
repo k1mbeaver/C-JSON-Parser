@@ -8,6 +8,9 @@
 #include <map> // 왼쪽은 key 값, 오른쪽은 value 값으로 사용, key와 value를 가지는 노드를 생성해서 정렬된 '트리형태'로 저장해두어 탐색속도를 높임
 using namespace std;
 
+constexpr double CompareError = 1e-3; // constexpr = 어떠한 식이 상수식이라고 명시해주는 키워드, 컴파일 시간에 상수를 사용할 수 있게 해준다.
+inline bool CompareFloats(const double& x, const double& y);
+
 enum class JsonType {
 	JSONNULL,
 	JSONNUMBER,
@@ -35,10 +38,13 @@ public:
 	JsonNull(JsonNull&&) = delete;
 
 	virtual bool Equal(JsonValue* WhatValue) const;
-	virtual JsonValue* Clone() const = 0;
+	virtual JsonValue* Clone() const;
 };
 
 class JsonNum : public JsonValue {
+	bool isFloatPoint;
+	double dbValue;
+	int nValue;
 public:
 	JsonNum() = delete;
 	JsonNum(const double& whatNum) noexcept;
@@ -49,8 +55,8 @@ public:
 	void Put(const double& whatNum) noexcept;
 	void Put(const int& whatNum) noexcept;
 	bool IsFloatPoint() const noexcept;
-	double getAsfloat() const;
-	int getAsInt() const;
+	double GetAsFloat() const;
+	int GetAsInt() const;
 
 	virtual bool Equal(JsonValue* whatValue) const;
 	virtual JsonValue* Clone() const;
