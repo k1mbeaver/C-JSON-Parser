@@ -1,0 +1,2 @@
+{"NAME" : "KIM", "AGE" : 25, "SEX" : "MALE", "ADDRESS" : "YULHA 3", "OBJECT" : {"NAME" : "CHA", "AGE" : 24, "SEX" : "FEMALE", "ADDRESS" : "YULHA 2"}, "ARRAY" : ["BASKETBALL", "SOCCER", 12, 4, {"NAME" : "KANG", "AGE" : 26, "SEX" : "MALE", "ADDRESS" : "YULHA 1"}]
+}
